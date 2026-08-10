@@ -1,0 +1,9 @@
+<div class="faq-item" [class.open]="open">
+  <button class="faq-q" (click)="toggle()" [attr.aria-expanded]="open">
+    <span>{{ question }}</span>
+    <span class="faq-icon">{{ open ? '−' : '+' }}</span>
+  </button>
+  <div class="faq-a" [style.maxHeight]="open ? '240px' : '0px'">
+    <p>{{ answer }}</p>
+  </div>
+</div>

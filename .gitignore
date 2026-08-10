@@ -1,0 +1,27 @@
+# --- secrets: never commit these ---
+.env
+.env.*
+!.env.example
+
+# --- python ---
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# --- node / angular ---
+node_modules/
+dist/
+.angular/
+*.log
+
+# --- runtime data ---
+backend/data/leads.json
+
+# --- editor / os ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json

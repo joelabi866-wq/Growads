@@ -1,0 +1,81 @@
+.pricing-panel {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 56px;
+  text-align: center;
+}
+.pricing-panel h2 { font-size: clamp(26px, 3.2vw, 34px); margin: 16px 0 14px; }
+.pricing-panel p { color: var(--muted); font-size: 15.5px; max-width: 500px; margin: 0 auto 30px; }
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 34px 0 24px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: left;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+.req { color: var(--accent); }
+.opt { font-weight: 400; color: var(--muted); }
+.field-error {
+  font-size: 12px;
+  font-weight: 500;
+  color: #DC2626;
+}
+.lead-form input, .lead-form textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding: 13px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--text);
+}
+.lead-form input:focus, .lead-form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+/* only after blur, so the field doesn't turn red while it's still being typed */
+.lead-form input.ng-invalid.ng-touched { border-color: #DC2626; }
+.lead-form input.ng-invalid.ng-touched:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+.lead-form button { width: 100%; justify-content: center; margin-top: 4px; }
+.lead-status {
+  font-size: 12.5px;
+  min-height: 16px;
+  text-align: center;
+  color: var(--muted);
+}
+.lead-status.ok { color: var(--success); font-weight: 600; }
+.lead-status.error { color: #DC2626; font-weight: 600; }
+
+@media (max-width: 720px) {
+  .pricing-panel { padding: 36px 24px; }
+}

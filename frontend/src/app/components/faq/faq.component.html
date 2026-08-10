@@ -1,0 +1,12 @@
+<section class="section faq-section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="badge-pill">❓ FAQ</span>
+      <h2>Quick answers.</h2>
+    </div>
+
+    <div class="faq-list glass-card">
+      <app-faq-item *ngFor="let f of faqs" [question]="f.q" [answer]="f.a"></app-faq-item>
+    </div>
+  </div>
+</section>

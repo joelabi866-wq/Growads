@@ -1,0 +1,25 @@
+.proof {
+  background: var(--gradient);
+  padding: 26px 0;
+}
+.proof-track {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+}
+.proof-item {
+  padding: 8px 28px;
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13.5px;
+}
+.proof-item:last-child { border-right: none; }
+.proof-item strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .proof-item { border-right: none; padding: 6px 16px; }
+}

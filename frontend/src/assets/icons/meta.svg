@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24" width="36" height="24" fill="none">
+  <defs>
+    <linearGradient id="metaGrad" x1="3" y1="12" x2="33" y2="12" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0064E1"/>
+      <stop offset=".4" stop-color="#0082FB"/>
+      <stop offset=".6" stop-color="#0082FB"/>
+      <stop offset="1" stop-color="#0064E1"/>
+    </linearGradient>
+  </defs>
+  <path d="M4 12C4 2 14 2 18 12C22 22 32 22 32 12C32 2 22 2 18 12C14 22 4 22 4 12Z"
+        stroke="url(#metaGrad)" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

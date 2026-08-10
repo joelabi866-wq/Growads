@@ -1,0 +1,56 @@
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="pricing-panel glass-card">
+      <span class="badge-pill">💳 Pricing</span>
+      <h2>Pricing built around your business, <span class="gradient-text">not a fixed menu.</span></h2>
+      <p>Ad spend, platforms, and scope vary too much business to business for a one-size-fits-all price tag. Tell us about your business, and we'll give you a straight number — no forms, no waiting.</p>
+
+      <div class="cta-row" style="justify-content:center;">
+        <a class="btn btn-primary btn-lg" [href]="chatConfig.whatsapp" target="_blank" rel="noopener"><img src="assets/icons/whatsapp.svg" alt="" class="btn-ico"> Chat on WhatsApp</a>
+        <a class="btn btn-outline btn-lg" [href]="chatConfig.telegram" target="_blank" rel="noopener"><img src="assets/icons/telegram.svg" alt="" class="btn-ico"> Chat on Telegram</a>
+      </div>
+
+      <div class="divider"><span>or request a callback</span></div>
+
+      <form #leadForm="ngForm" class="lead-form" novalidate (ngSubmit)="submitLead(leadForm)">
+        <div class="field">
+          <label for="lead-name">Your name <span class="req" aria-hidden="true">*</span></label>
+          <input id="lead-name" type="text" name="name" placeholder="Your name"
+                 [(ngModel)]="lead.name" #nameCtrl="ngModel" required>
+          <span class="field-error" *ngIf="nameCtrl.invalid && (nameCtrl.touched || leadForm.submitted)">
+            Please enter your name.
+          </span>
+        </div>
+
+        <div class="field">
+          <label for="lead-email">Email address <span class="req" aria-hidden="true">*</span></label>
+          <input id="lead-email" type="email" name="email" placeholder="you@company.com"
+                 [(ngModel)]="lead.email" #emailCtrl="ngModel" required email>
+          <span class="field-error" *ngIf="emailCtrl.invalid && (emailCtrl.touched || leadForm.submitted)">
+            {{ emailCtrl.errors?.['required'] ? 'Email address is required.' : 'Enter a valid email address.' }}
+          </span>
+        </div>
+
+        <div class="field">
+          <label for="lead-phone">Phone number <span class="req" aria-hidden="true">*</span></label>
+          <input id="lead-phone" type="tel" name="phone" placeholder="+1 555 000 0000"
+                 [(ngModel)]="lead.phone" #phoneCtrl="ngModel" required minlength="7">
+          <span class="field-error" *ngIf="phoneCtrl.invalid && (phoneCtrl.touched || leadForm.submitted)">
+            {{ phoneCtrl.errors?.['required'] ? 'Phone number is required.' : 'Enter a valid phone number.' }}
+          </span>
+        </div>
+
+        <div class="field">
+          <label for="lead-business">Tell us about your business <span class="opt">(optional)</span></label>
+          <textarea id="lead-business" name="business" placeholder="Industry, current ad spend, what you're trying to grow"
+                    rows="3" [(ngModel)]="lead.business"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="leadStatus === 'sending'">
+          {{ leadStatus === 'sending' ? 'Sending…' : 'Request a callback' }}
+        </button>
+        <p class="lead-status" [class.ok]="leadStatus === 'ok'" [class.error]="leadStatus === 'error'">{{ leadMessage }}</p>
+      </form>
+    </div>
+  </div>
+</section>

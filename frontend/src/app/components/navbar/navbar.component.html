@@ -1,0 +1,24 @@
+<header class="nav" [class.scrolled]="scrolled">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo">
+      <img src="assets/logo.svg" alt="TheGrowAds" class="logo-mark">
+      TheGrowAds
+    </a>
+    <nav class="nav-links">
+      <a *ngFor="let link of navLinks" [href]="link.href">{{ link.label }}</a>
+    </nav>
+    <div class="nav-ctas">
+      <a class="btn btn-outline" [href]="chatConfig.whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn btn-primary" [href]="chatConfig.telegram" target="_blank" rel="noopener">Telegram</a>
+    </div>
+    <button class="menu-toggle" (click)="toggleMobileMenu()" aria-label="Menu">☰</button>
+  </div>
+
+  <div class="mobile-menu" [class.open]="mobileMenuOpen" *ngIf="mobileMenuOpen">
+    <a *ngFor="let link of navLinks" [href]="link.href" (click)="closeMobileMenu()">{{ link.label }}</a>
+    <div class="mobile-ctas">
+      <a class="btn btn-outline" [href]="chatConfig.whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn btn-primary" [href]="chatConfig.telegram" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </div>
+</header>

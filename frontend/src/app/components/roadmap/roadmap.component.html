@@ -1,0 +1,28 @@
+<section class="section timeline-section" id="how-it-works">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="badge-pill">🗺️ How It Works</span>
+      <h2>Our growth roadmap.</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="phase" *ngFor="let ph of phases; let i = index">
+        <div class="phase-circle">{{ i + 1 }}</div>
+        <div class="phase-card glass-card">
+          <span class="phase-label">{{ ph.label }}</span>
+          <h3>{{ ph.title }}</h3>
+          <ul>
+            <li *ngFor="let item of ph.items">
+              <span class="check">✓</span>{{ item }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-row" style="justify-content:center;margin-top:50px;">
+      <a class="btn btn-primary btn-lg" [href]="chatConfig.whatsapp" target="_blank" rel="noopener"><img src="assets/icons/whatsapp.svg" alt="" class="btn-ico"> Chat on WhatsApp</a>
+      <a class="btn btn-outline btn-lg" [href]="chatConfig.telegram" target="_blank" rel="noopener"><img src="assets/icons/telegram.svg" alt="" class="btn-ico"> Chat on Telegram</a>
+    </div>
+  </div>
+</section>

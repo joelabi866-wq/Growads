@@ -1,0 +1,18 @@
+<section class="section why-section">
+  <div class="blob" style="width:500px;height:500px;top:20%;left:50%;transform:translateX(-50%);background:#8B5CF6;opacity:0.12;"></div>
+  <div class="wrap" style="position:relative;z-index:1;">
+    <div class="section-head">
+      <span class="badge-pill">💡 Why GrowAds</span>
+      <h2>Most agencies run ads.<br><span class="gradient-text">We run your growth.</span></h2>
+      <p>We connect every piece — who you're targeting, what you're offering, the ad, the page it lands on, and what happens after someone converts — so every dollar spent works toward one thing: more revenue.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card glass-card" *ngFor="let w of points; let i = index">
+        <span class="num">{{ i + 1 }}</span>
+        <h3>{{ w.title }}</h3>
+        <p>{{ w.desc }}</p>
+      </div>
+    </div>
+  </div>
+</section>

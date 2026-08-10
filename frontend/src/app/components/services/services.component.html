@@ -1,0 +1,33 @@
+<section class="section" id="what-we-do">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="badge-pill">⚙️ What We Do</span>
+      <h2>One team. Every channel. <span class="gradient-text">Built for revenue.</span></h2>
+      <p>We take full ownership of your ad ecosystem — strategy, platforms, creative direction, and optimization. Meta, Google, TikTok, Snapchat: whichever channels actually move your revenue, we build the mix and run it.</p>
+    </div>
+
+    <div class="channel-grid">
+      <div class="channel-card glass-card" *ngFor="let o of objectives; let i = index">
+        <span class="objective-num">{{ i + 1 }}</span>
+        <h3>{{ o.label }}</h3>
+        <p>{{ o.desc }}</p>
+      </div>
+    </div>
+
+    <p class="vertical-note">Works across every category: <strong>D2C, SaaS, real estate, clinics, education, local services,</strong> and more.</p>
+
+    <div class="risk-panel">
+      <div class="risk-copy">
+        <span class="badge-pill" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.25);color:#fff;">🔓 High-Risk Approved</span>
+        <h3>High-risk industries? We know how to scale them.</h3>
+        <p>Casino, gambling, crypto, forex, sweepstakes, and other regulated industries require more than media buying — they require expertise. We understand how to structure accounts, campaigns, and creatives to maximize approval potential and long-term scalability.</p>
+      </div>
+      <div class="risk-side">
+        <div class="chip-row">
+          <span class="chip" *ngFor="let i of industries">{{ i }}</span>
+        </div>
+        <a class="btn btn-primary" [href]="chatConfig.whatsapp" target="_blank" rel="noopener">Find out what fits your business →</a>
+      </div>
+    </div>
+  </div>
+</section>

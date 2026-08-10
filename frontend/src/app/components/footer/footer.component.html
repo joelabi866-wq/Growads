@@ -1,0 +1,29 @@
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <a href="#top" class="logo">
+        <img src="assets/logo.svg" alt="TheGrowAds" class="logo-mark">
+        TheGrowAds
+      </a>
+      <p class="footer-copy">End-to-end marketing across Meta, Google, TikTok, Snapchat and more platforms.</p>
+    </div>
+    <div class="footer-links">
+      <a [href]="chatConfig.whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+      <a [href]="chatConfig.telegram" target="_blank" rel="noopener">Telegram</a>
+      <a href="mailto:email&#64;thegrowads.com">email&#64;thegrowads.com</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="footer-copy" style="margin-top:20px;">© {{ year }} TheGrowAds. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="float-chat">
+  <app-ai-chat *ngIf="chatConfig.aiChat !== false"></app-ai-chat>
+  <a class="float-btn float-wa" [href]="chatConfig.whatsapp" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <img src="assets/icons/whatsapp.svg" alt="WhatsApp">
+  </a>
+  <a class="float-btn float-tg" [href]="chatConfig.telegram" target="_blank" rel="noopener" aria-label="Chat on Telegram">
+    <img src="assets/icons/telegram.svg" alt="Telegram">
+  </a>
+</div>

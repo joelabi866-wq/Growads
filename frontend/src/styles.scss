@@ -1,0 +1,243 @@
+// ============================================================
+// Global design tokens — classic "AI product" look on purpose:
+// indigo→violet→pink gradient, glassmorphism cards, soft blobs.
+// ============================================================
+:root {
+  --bg: #FAFAFF;
+  --bg-2: #F2F1FF;
+  --surface: rgba(255, 255, 255, 0.75);
+  --surface-solid: #FFFFFF;
+  --text: #1E1B3A;
+  --muted: #6B7280;
+  --primary: #6366F1;
+  --primary-2: #8B5CF6;
+  --accent: #EC4899;
+  --gradient: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
+  --gradient-soft: linear-gradient(135deg, rgba(99,102,241,0.10), rgba(236,72,153,0.10));
+  --border: rgba(99, 102, 241, 0.14);
+  --success: #10B981;
+  --shadow-sm: 0 2px 10px rgba(99, 102, 241, 0.08);
+  --shadow-md: 0 12px 32px rgba(99, 102, 241, 0.14);
+  --shadow-lg: 0 24px 60px rgba(99, 102, 241, 0.18);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-pill: 999px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+p { margin: 0; }
+ul { list-style: none; margin: 0; padding: 0; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+
+::selection { background: var(--primary); color: #fff; }
+
+// ---- reusable utility classes shared across components ----
+
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-soft);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-2);
+}
+
+.glass-card {
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 14.5px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
+  background: var(--surface-solid);
+  color: var(--text);
+  border: 1.5px solid var(--border);
+}
+
+.btn-outline:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.cta-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-lg {
+  padding: 16px 32px;
+  font-size: 15px;
+}
+
+/* brand logo sitting inside a button label (WhatsApp / Telegram) */
+.btn-ico {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: block;
+}
+.btn-lg .btn-ico { width: 22px; height: 22px; }
+
+.mark {
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  background: var(--gradient);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.mark-lg {
+  width: 44px;
+  height: 44px;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.icon-badge img { width: 55%; height: 55%; object-fit: contain; }
+
+/* Official brand marks sit on their own brand-approved backgrounds:
+   Meta + Google are full-colour marks on white, TikTok is the black lockup,
+   Snapchat is the white ghost on Snap Yellow. */
+.bg-meta { background: #FFFFFF; border: 1.5px solid var(--border); }
+.bg-google { background: #FFFFFF; border: 1.5px solid var(--border); }
+.bg-tiktok { background: #000000; }
+.bg-snap { background: #FFFC00; }
+
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.section-head {
+  max-width: 640px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.section-head h2 {
+  font-size: clamp(28px, 3.6vw, 42px);
+  line-height: 1.2;
+  margin-top: 16px;
+}
+
+.section-head p {
+  color: var(--muted);
+  font-size: 16.5px;
+  margin-top: 14px;
+}
+
+// ---- blurred gradient blobs used as ambient background decoration ----
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .blob-float {
+    animation: floatBlob 9s ease-in-out infinite;
+  }
+}
+
+@keyframes floatBlob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(24px, -18px) scale(1.08); }
+}
+
+@media (max-width: 720px) {
+  .wrap { padding: 0 20px; }
+  .section { padding: 72px 0; }
+}

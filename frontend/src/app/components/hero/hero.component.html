@@ -1,0 +1,30 @@
+<section class="hero" id="top">
+  <div class="blob blob-float" style="width:420px;height:420px;top:-100px;left:-120px;background:#6366F1;"></div>
+  <div class="blob blob-float" style="width:380px;height:380px;top:80px;right:-140px;background:#EC4899;animation-delay:2s;"></div>
+
+  <div class="wrap hero-inner">
+    <span class="badge-pill">✨ AI-Optimized Ad Management</span>
+    <h1>
+      End-to-end marketing.<br>
+      <span class="gradient-text">Built to grow your business.</span>
+    </h1>
+    <p class="hero-sub">
+      From strategy to execution across Meta, Google, TikTok, Snapchat and other platforms —
+      we handle every part of your marketing, so you can focus on running your business while it grows.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary btn-lg" [href]="chatConfig.whatsapp" target="_blank" rel="noopener"><img src="assets/icons/whatsapp.svg" alt="" class="btn-ico"> Chat on WhatsApp</a>
+      <a class="btn btn-outline btn-lg" [href]="chatConfig.telegram" target="_blank" rel="noopener"><img src="assets/icons/telegram.svg" alt="" class="btn-ico"> Chat on Telegram</a>
+    </div>
+    <p class="hero-foot">No forms, no waiting. We'll audit your ad account live, free, and build your strategy from there.</p>
+
+    <div class="platform-grid">
+      <div class="platform-pill glass-card" *ngFor="let p of platforms">
+        <span class="icon-badge platform-icon" [ngClass]="p.colorClass">
+          <img [src]="p.icon" [alt]="p.label">
+        </span>
+        {{ p.label }}
+      </div>
+    </div>
+  </div>
+</section>

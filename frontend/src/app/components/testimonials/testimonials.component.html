@@ -1,0 +1,44 @@
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="badge-pill">⭐ From Clients</span>
+      <h2>What running growth <span class="gradient-text">(not just ads)</span> looks like.</h2>
+      <p>Join the brands that rely on us to run their paid growth every day.</p>
+    </div>
+
+    <div class="testi-grid">
+      <article class="testi-card glass-card" *ngFor="let t of testimonials">
+        <!-- decorative dot grid, mirrors the reference layout's top-right texture -->
+        <span class="dot-grid" aria-hidden="true"></span>
+
+        <div class="brand-badge">
+          <img src="assets/logo.svg" alt="TheGrowAds" class="brand-mark">
+        </div>
+
+        <div class="quote-box">
+          <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+          <p class="quote">{{ t.quote }}</p>
+
+          <a
+            *ngIf="t.videoUrl"
+            class="play-btn"
+            [href]="t.videoUrl"
+            target="_blank"
+            rel="noopener"
+            [attr.aria-label]="'Play video testimonial from ' + t.author">
+            <span class="play-icon"></span>
+          </a>
+
+          <div class="author-row">
+            <img *ngIf="t.photo" [src]="t.photo" [alt]="t.author" class="avatar">
+            <div *ngIf="!t.photo" class="avatar avatar-fallback">{{ initials(t.author) }}</div>
+            <div class="author-meta">
+              <cite>{{ t.author }}</cite>
+              <span *ngIf="t.role" class="role">{{ t.role }}</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
