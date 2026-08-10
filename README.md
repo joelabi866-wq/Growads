@@ -85,13 +85,43 @@ the backend on port 8000. Visit **http://localhost:4200**.
 cd frontend
 npm run build
 ```
-This outputs static files to `frontend/dist/growads-frontend/browser`. `backend/main.py`
+This outputs static files to `frontend/dist/growads-frontend`. `backend/main.py`
 already checks for that folder and serves it automatically — so in production you can just
 run the FastAPI server and it serves both the API and the built Angular app from one process:
 ```bash
 cd backend
 uvicorn main:app --host 0.0.0.0 --port 8000
 ```
+
+## Deploying to Vercel
+`vercel.json` at the repo root wires both halves of the app:
+
+- **Frontend** — Vercel runs `npm ci && npm run build` inside `frontend/` and serves
+  `frontend/dist/growads-frontend` from the CDN. A catch-all rewrite sends unknown paths to
+  `index.html` so Angular routing works on refresh.
+- **Backend** — `api/index.py` re-exports the FastAPI app from `backend/main.py`, and every
+  `/api/*` request is rewritten to it. FastAPI still sees the original path, so the routes
+  (`/api/health`, `/api/config`, `/api/lead`, `/api/chat`) need no changes. The root
+  `requirements.txt` is what Vercel installs for the function — keep it in sync with
+  `backend/requirements.txt`.
+
+Set these in **Project Settings → Environment Variables** (never commit them):
+
+| Variable | Value |
+|---|---|
+| `GROQ_API_KEY` | your Groq key — without it `/api/chat` returns 503 and the widget hides itself |
+| `GROQ_MODEL` | `llama-3.3-70b-versatile` |
+| `WHATSAPP_LINK` | your real wa.me link |
+| `TELEGRAM_LINK` | your real t.me link |
+
+### Before launch: leads are not durable on Vercel
+The serverless filesystem is read-only apart from `/tmp`, and `/tmp` is wiped between cold
+starts. `/api/lead` therefore writes to `/tmp/growads-data/leads.json` **and** prints the lead
+to the platform log (`[lead] {...}`, visible under Deployments → Logs), but nothing there
+survives long. Before taking the callback form live, wire a real sink at the marked hook in
+`create_lead()` — email/SendGrid, a Slack webhook, a CRM, or a hosted database.
+
+Also narrow `allow_origins=["*"]` in `backend/main.py` to your real domain once it's known.
 
 ## Note on this delivery
 I ran and verified the **backend** end-to-end (installed dependencies, started the server,

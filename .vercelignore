@@ -1,0 +1,14 @@
+# Belt-and-braces for `vercel` CLI deploys, which upload the working directory
+# rather than the git tree. Never let local secrets or build junk leave the machine.
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+node_modules/
+frontend/dist/
+.angular/
+backend/data/
+*.log
+.DS_Store

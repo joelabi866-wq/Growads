@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # --- secrets: never commit these ---
 .env
 .env.*
@@ -20,16 +19,12 @@ dist/
 # --- runtime data ---
 backend/data/leads.json
 
+# --- vercel ---
+.vercel/
+
 # --- editor / os ---
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/*
 !.vscode/extensions.json
-=======
-.env
-__pycache__/
-*.pyc
-.venv/
-data/leads.json
->>>>>>> 9e5f0ae476f4b2e2ead1e1a19453c33a68b35e67

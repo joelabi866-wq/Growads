@@ -13,12 +13,21 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
-load_dotenv()
-
 BASE_DIR = Path(__file__).resolve().parent
-DATA_DIR = BASE_DIR / "data"
+
+# Pin the .env lookup to this file's folder, not the working directory, so it loads
+# the same way however uvicorn is invoked. On Vercel there is no .env and this is a
+# no-op — the values come from the project's environment variables instead.
+load_dotenv(BASE_DIR / ".env")
+
+# On Vercel (and most serverless hosts) the deployment is read-only apart from /tmp,
+# so writing next to the code raises OSError. /tmp works but is wiped between cold
+# starts — leads stored there are NOT durable. See the note in README before launch.
+SERVERLESS = bool(os.getenv("VERCEL"))
+DATA_DIR = Path("/tmp/growads-data") if SERVERLESS else BASE_DIR / "data"
 LEADS_FILE = DATA_DIR / "leads.json"
-FRONTEND_DIST = BASE_DIR.parent / "frontend" / "dist" / "growads-frontend" / "browser"
+
+FRONTEND_DIST = BASE_DIR.parent / "frontend" / "dist" / "growads-frontend"
 
 # --- Groq (OpenAI-compatible chat completions) ---
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
@@ -155,6 +164,10 @@ def create_lead(lead: LeadIn):
     }
     leads.append(entry)
     write_leads(leads)
+
+    # On serverless the file above is throwaway, so also emit the lead to the platform
+    # log — that's the only place it survives until a real sink is wired up.
+    print(f"[lead] {json.dumps(entry)}")
 
     # Hook a real notification here later, e.g.:
     # - send an email via smtplib / SendGrid
