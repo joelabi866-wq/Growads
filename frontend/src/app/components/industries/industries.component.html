@@ -1,0 +1,16 @@
+<section class="section industries-section" id="industries">
+  <div class="blob" style="width:460px;height:460px;top:-12%;left:50%;transform:translateX(-50%);background:#6366F1;opacity:0.10;"></div>
+  <div class="wrap" style="position:relative;z-index:1;">
+    <div class="section-head">
+      <span class="badge-pill">🏦 Industries We Serve</span>
+      <h2>Ad Accounts Built for <span class="gradient-text">Your Industry</span></h2>
+      <p>Whatever your business, get access to ad accounts designed to help you launch, manage, and scale your advertising campaigns.</p>
+    </div>
+
+    <div class="industry-row">
+      <span class="industry-chip" *ngFor="let name of industries">{{ name }}</span>
+      <!-- The closer is a chip too, so the row reads as one continuous list. -->
+      <span class="industry-chip industry-chip-more">{{ moreLabel }}</span>
+    </div>
+  </div>
+</section>

@@ -1,8 +1,8 @@
 import { Platform, ServiceObjective, WhyPoint, Testimonial, RoadmapPhase, FaqEntry, ProofItem } from '../models';
 
 export const FALLBACK_CHAT_CONFIG = {
-  whatsapp: 'https://wa.me/00000000000',
-  telegram: 'https://t.me/yourusername'
+  whatsapp: 'https://wa.me/919566211414',
+  telegram: 'https://t.me/Thegrowads'
 };
 
 export const PLATFORMS: Platform[] = [
@@ -32,7 +32,14 @@ export const SERVICE_OBJECTIVES: ServiceObjective[] = [
   }
 ];
 
-export const HIGH_RISK_INDUSTRIES: string[] = ['Casino', 'Gambling', 'Crypto', 'Forex', 'Sweepstakes'];
+// Drives the "Ad Accounts Built for Your Industry" chip row. The closer is kept
+// separate so the section can style it as the emphasis chip.
+export const INDUSTRY_TAGS: string[] = [
+  'Gambling', 'Crypto', 'Finance', 'Forex', 'Gaming', 'E-commerce',
+  'D2C', 'SaaS', 'Real Estate', 'Healthcare', 'Education'
+];
+
+export const INDUSTRY_MORE_LABEL = '30+ More Industries';
 
 // Matches the original content document's proof strip wording exactly.
 export const PROOF_ITEMS: ProofItem[] = [
