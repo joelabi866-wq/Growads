@@ -1,0 +1,52 @@
+/* Sits on a soft tinted band so the chip list separates from the white
+   sections either side of it without introducing a new colour. */
+.industries-section {
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(99,102,241,0.05) 0%, rgba(236,72,153,0.04) 100%);
+}
+
+.industry-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.industry-chip {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 11px 22px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-solid);
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.industry-chip:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.industry-chip-more {
+  background: var(--gradient);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: var(--shadow-md);
+}
+
+.industry-chip-more:hover {
+  color: #fff;
+  border-color: transparent;
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 720px) {
+  .industry-row { gap: 9px; }
+  .industry-chip { font-size: 13px; padding: 9px 16px; }
+}

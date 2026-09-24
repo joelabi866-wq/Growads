@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HeroComponent } from '../../components/hero/hero.component';
 import { ProofStripComponent } from '../../components/proof-strip/proof-strip.component';
+import { IndustriesComponent } from '../../components/industries/industries.component';
 import { ServicesComponent } from '../../components/services/services.component';
 import { WhyGrowadsComponent } from '../../components/why-growads/why-growads.component';
 import { TestimonialsComponent } from '../../components/testimonials/testimonials.component';
@@ -15,6 +16,7 @@ import { FinalCtaComponent } from '../../components/final-cta/final-cta.componen
   imports: [
     HeroComponent,
     ProofStripComponent,
+    IndustriesComponent,
     ServicesComponent,
     WhyGrowadsComponent,
     TestimonialsComponent,

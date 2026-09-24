@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConfigService } from '../../shared/services';
 import { ChatConfig, ServiceObjective } from '../../shared/models';
-import { FALLBACK_CHAT_CONFIG, SERVICE_OBJECTIVES, HIGH_RISK_INDUSTRIES } from '../../shared/constants';
+import { FALLBACK_CHAT_CONFIG, SERVICE_OBJECTIVES } from '../../shared/constants';
 
 @Component({
   selector: 'app-services',
@@ -13,7 +13,6 @@ import { FALLBACK_CHAT_CONFIG, SERVICE_OBJECTIVES, HIGH_RISK_INDUSTRIES } from '
 })
 export class ServicesComponent implements OnInit {
   objectives: ServiceObjective[] = SERVICE_OBJECTIVES;
-  industries: string[] = HIGH_RISK_INDUSTRIES;
   chatConfig: ChatConfig = FALLBACK_CHAT_CONFIG;
 
   constructor(private configService: ConfigService) {}

@@ -110,7 +110,7 @@ Set these in **Project Settings → Environment Variables** (never commit them):
 | Variable | Value |
 |---|---|
 | `GROQ_API_KEY` | your Groq key — without it `/api/chat` returns 503 and the widget hides itself |
-| `GROQ_MODEL` | `llama-3.3-70b-versatile` |
+| `GROQ_MODEL` | `qwen/qwen3.8-27b` |
 | `WHATSAPP_LINK` | your real wa.me link |
 | `TELEGRAM_LINK` | your real t.me link |
 
